@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   does_exist.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andi <andi@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/02 18:02:06 by andi              #+#    #+#             */
-/*   Updated: 2024/09/06 12:53:52 by andi             ###   ########.fr       */
+/*   Created: 2024/08/02 18:05:36 by andi              #+#    #+#             */
+/*   Updated: 2024/09/10 10:07:03 by anvacca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void file_name(int ac, char **av)
+#include "../../includes/so_long.h"
+
+int	ft_strlen(char *str)
 {
-	if (ac != 2)
-		exit_function(1)
-	if (ft_strcmp(av[1][strlen(av[1] - 4)], ".ber") != 0)
-		exit_function(2)
-		
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   is_rectangle.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andi <andi@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/02 18:51:07 by andi              #+#    #+#             */
-/*   Updated: 2024/09/06 12:57:31 by andi             ###   ########.fr       */
+/*   Created: 2024/09/10 09:32:11 by anvacca           #+#    #+#             */
+/*   Updated: 2024/09/10 10:06:44 by anvacca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
+#include "../../includes/so_long.h"
+
+void is_rectangle(t_game *game)
 {
 	int i;
 
 	i = 0;
-	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+	while (game->map[i + 1])
+	{
+		if (ft_strlen(game->map[i]) != ft_strlen(game->map[i + 1]))
+		{	
+			free_map(game);
+			exit_function(4);
+		}
 		i++;
-	return (s1[i] - s2[i]);
+	}
 }

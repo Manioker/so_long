@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_function.c                                    :+:      :+:    :+:   */
+/*   free_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andi <andi@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/06 12:54:25 by andi              #+#    #+#             */
-/*   Updated: 2024/09/06 13:53:37 by andi             ###   ########.fr       */
+/*   Created: 2024/09/10 09:14:45 by anvacca           #+#    #+#             */
+/*   Updated: 2024/09/10 10:05:54 by anvacca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void exit_function(int num)
+#include "../../includes/so_long.h"
+
+void	free_map(t_game *game)
 {
-	if (num == 1)
-		write(1, "not enough or too many args", 27);
-	if (num == 2)
-		write(1, "map does not exist", 18);
-	if (num == 3)
-		write(1, "allocation failed", 17);
-	exit(1);
+	unsigned int	i;
+
+	i = 0;
+	while (game->map[i])
+	{
+		free(game->map[i]);
+		i++;
+	}
+	free(game->map);
 }

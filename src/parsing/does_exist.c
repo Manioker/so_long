@@ -1,17 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   does_exist.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andi <andi@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/02 18:35:33 by andi              #+#    #+#             */
-/*   Updated: 2024/09/06 13:16:47 by andi             ###   ########.fr       */
+/*   Created: 2024/08/02 18:02:06 by andi              #+#    #+#             */
+/*   Updated: 2024/09/10 11:05:05 by anvacca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int main(int ac, char **av)
+#include "../../includes/so_long.h"
+
+void does_exist(int ac, char **av)
 {
-	does_exist(ac, av);
-	is_rectangular();
+	if (ac != 2)
+		exit_function(1);
+	if (ft_strcmp(av[1][strlen(av[1] - 4)], ".ber") != 0)
+		exit_function(2);
 }
