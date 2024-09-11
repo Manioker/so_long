@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   printus.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/02 18:05:36 by andi              #+#    #+#             */
-/*   Updated: 2024/09/11 11:06:27 by anvacca          ###   ########.fr       */
+/*   Created: 2024/09/11 11:16:57 by anvacca           #+#    #+#             */
+/*   Updated: 2024/09/11 11:17:17 by anvacca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
-
-size_t	ft_strlen(char *c)
+void printus(char **map)
 {
-	size_t	i;
+	int j;
 
-	i = 0;
-	while (c[i])
-		i++;
-	return (i);
+	j = 0;
+	while (map[j])
+	{
+		printf("%s", map[j]);
+		j++;
+	}
 }

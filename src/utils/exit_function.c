@@ -6,7 +6,7 @@
 /*   By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:54:25 by andi              #+#    #+#             */
-/*   Updated: 2024/09/10 10:06:55 by anvacca          ###   ########.fr       */
+/*   Updated: 2024/09/11 08:07:53 by anvacca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void exit_function(int num)
 		write(1, "map does not exist", 18);
 	if (num == 3)
 		write(1, "allocation failed", 17);
-	if (num == 3)
+	if (num == 4)
 		write(1, "incorrect map", 13);
 	exit(1);
 }

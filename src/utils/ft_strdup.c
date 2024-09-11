@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/02 18:05:36 by andi              #+#    #+#             */
-/*   Updated: 2024/09/11 11:06:27 by anvacca          ###   ########.fr       */
+/*   Created: 2024/09/11 11:44:50 by anvacca           #+#    #+#             */
+/*   Updated: 2024/09/11 11:45:32 by anvacca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-size_t	ft_strlen(char *c)
+char	*ft_strdup(char *str)
 {
-	size_t	i;
+	int		i;
+	char	*dup;
 
-	i = 0;
-	while (c[i])
-		i++;
-	return (i);
+	i = -1;
+	dup = (char *)malloc(sizeof(char) * ft_strlen(str) + 1);
+	if (dup == NULL)
+		return (NULL);
+	while (str[++i])
+		dup[i] = str[i];
+	dup[i] = '\0';
+	return (dup);
 }

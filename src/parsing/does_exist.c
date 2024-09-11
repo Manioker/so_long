@@ -6,7 +6,7 @@
 /*   By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 18:02:06 by andi              #+#    #+#             */
-/*   Updated: 2024/09/10 11:05:05 by anvacca          ###   ########.fr       */
+/*   Updated: 2024/09/11 10:08:31 by anvacca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ void does_exist(int ac, char **av)
 {
 	if (ac != 2)
 		exit_function(1);
-	if (ft_strcmp(av[1][strlen(av[1] - 4)], ".ber") != 0)
+	if (ft_strcmp(av[1] + ft_strlen(av[1] - 4), ".ber") != 0)
 		exit_function(2);
 }
