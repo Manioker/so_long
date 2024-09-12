@@ -6,7 +6,7 @@
 #    By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/10 10:01:19 by anvacca           #+#    #+#              #
-#    Updated: 2024/09/11 11:46:21 by anvacca          ###   ########.fr        #
+#    Updated: 2024/09/12 09:14:55 by anvacca          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ EXE			=	so_long
 
 # Files
 SRC			=	./src/main.c \
+				./src/test.c \
 
 SRC_UTILS	=	./src/utils/exit_function.c \
 				./src/utils/ft_strcmp.c \
@@ -36,7 +37,7 @@ SOURCES		=	${SRC} ${SRC_UTILS} ${SRC_MAP} ${SRC_PARSING}
 OBJECTS		=	${SOURCES:%.c=obj/%.o}
 
 # Libraries
-# MINILIBX	=	./includes/.MiniLibX
+MINILIBX	=	./includes/mlx_linux
 
 # Variables
 CC			=	cc
@@ -47,9 +48,8 @@ RM			=	rm -rf
 all:		${EXE}
 
 ${EXE}:		${OBJECTS}
-# @${MAKE} -C ${MINILIBX} > /dev/null 2>&1
-			@${CC} ${CFLAGS} ${OBJECTS} -o ${EXE}
-# -L${MINILIBX} -lmlx -lX11 -lXext -lm 
+			@${MAKE} -C ${MINILIBX} > /dev/null 2>&1
+			@${CC} ${CFLAGS} ${OBJECTS} -L${MINILIBX} -lmlx -lX11 -lXext -lm -o ${EXE} 
 
 obj/%.o:	%.c
 			@mkdir -p obj/$(dir $<)

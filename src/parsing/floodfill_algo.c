@@ -6,7 +6,7 @@
 /*   By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 08:11:47 by anvacca           #+#    #+#             */
-/*   Updated: 2024/09/11 13:29:33 by anvacca          ###   ########.fr       */
+/*   Updated: 2024/09/12 14:23:08 by anvacca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,34 +15,34 @@
 void	used_char(t_game *game, int j, int i)
 {
 	if (game->map[j][i] == 'C')
-		game->C--;
+		game->count.C--;
 	if (game->map[j][i] == 'E')
-		game->E--;
-	game->map_copy[game->Py][game->Px] = '1';
+		game->count.E--;
+	game->map_copy[game->pos.Py][game->pos.Px] = '1';
 	floodfill_algo(game);
 }
 
 void	floodfill_algo(t_game *game)
 {
-	if (game->map_copy[game->Py][game->Px + 1] != '1')
+	if (game->map_copy[game->pos.Py][game->pos.Px + 1] != '1')
 	{
-		used_char(game, game->Py, game->Px++);
-		game->Px--;
+		used_char(game, game->pos.Py, game->pos.Px++);
+		game->pos.Px--;
 	}
-	else if (game->map_copy[game->Py + 1][game->Px] != '1')
+	else if (game->map_copy[game->pos.Py + 1][game->pos.Px] != '1')
 	{
-		used_char(game, game->Py++, game->Px);
-		game->Py--;
+		used_char(game, game->pos.Py++, game->pos.Px);
+		game->pos.Py--;
 	}
-	else if (game->map_copy[game->Py][game->Px - 1] != '1')
+	else if (game->map_copy[game->pos.Py][game->pos.Px - 1] != '1')
 	{
-		used_char(game, game->Py, game->Px--);
-		game->Px++;
+		used_char(game, game->pos.Py, game->pos.Px--);
+		game->pos.Px++;
 	}
-	else if (game->map_copy[game->Py - 1][game->Px] != '1')
+	else if (game->map_copy[game->pos.Py - 1][game->pos.Px] != '1')
 	{
-		used_char(game, game->Py--, game->Px);
-		game->Py++;
+		used_char(game, game->pos.Py--, game->pos.Px);
+		game->pos.Py++;
 	}
 	else
 		return ;

@@ -6,7 +6,7 @@
 /*   By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:54:25 by andi              #+#    #+#             */
-/*   Updated: 2024/09/11 08:07:53 by anvacca          ###   ########.fr       */
+/*   Updated: 2024/09/12 14:39:17 by anvacca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@ void exit_function(int num)
 		write(1, "allocation failed", 17);
 	if (num == 4)
 		write(1, "incorrect map", 13);
+	if (num == 5)
+		write(1, "failed window", 13);
 	exit(1);
 }

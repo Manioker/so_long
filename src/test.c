@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/02 18:05:36 by andi              #+#    #+#             */
-/*   Updated: 2024/09/12 09:05:02 by anvacca          ###   ########.fr       */
+/*   Created: 2024/09/12 08:56:01 by anvacca           #+#    #+#             */
+/*   Updated: 2024/09/12 09:18:40 by anvacca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "../includes/so_long.h"
 
-int	ft_strlen(char *c)
+void	test(void)
 {
-	int	i;
+	void	*mlx;
+	void	*mlx_win;
 
-	i = 0;
-	while (c[i])
-		i++;
-	return (i);
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
+	mlx_loop(mlx);
 }
