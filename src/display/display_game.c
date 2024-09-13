@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_binds.c                                        :+:      :+:    :+:   */
+/*   display_game.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andi <andi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/12 15:00:02 by anvacca           #+#    #+#             */
-/*   Updated: 2024/09/13 16:23:42 by andi             ###   ########.fr       */
+/*   Created: 2024/09/13 16:29:25 by andi              #+#    #+#             */
+/*   Updated: 2024/09/13 16:35:04 by andi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
-
-int	key_binds(int key_code, t_game *game)
+void display(t_game *game, int *i, int j)
 {
-	if (key_code == ESC)
-		close_display(game);
-	else if (key_code == W || ARROW_UP)
-		player_move(W, game);
-	else if (key_code == A || ARROW_LEFT)
-		player_move(A, game);
-	else if (key_code == S || ARROW_DOWN)
-		player_move(S, game);
-	else if (key_code == D || ARROW_RIGHT)
-		player_move(D, game);
-	else
-		return (0);
+	if (game->map[j][*i] == '1')
+		display_wall(game);
+	if (game->map[j][*i] == 'C')
+		display_collectible(game);
+	if (game->map[j][*i] == 'P')
+		display_character(game);
+	*i += 1;
+}
+
+void display_game(t_game *game)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (game->map[j])
+	{
+		while(game->map[j][i])
+			display(game, &i, j);
+		j++;
+		i = 0;
+	}
 }

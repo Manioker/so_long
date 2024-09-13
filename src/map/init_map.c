@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+        */
+/*   By: andi <andi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 13:17:12 by andi              #+#    #+#             */
-/*   Updated: 2024/09/11 13:25:39 by anvacca          ###   ########.fr       */
+/*   Updated: 2024/09/13 11:16:14 by andi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,11 @@ void init_map(char **av, t_game *game)
 	int fd;
 	char *line;
 	int i;
-	int size;
 
 	i = 0;
 	fd = open(av[1], O_RDONLY);
-	size = map_size(fd);
-	game->map = malloc(sizeof(char*) * (size + 1));
+	game->map_height = map_game->map_height(fd);
+	game->map = malloc(sizeofof(char*) * (game->map_height + 1));
 	if (!game->map)
 		exit_function(3);
 	fd = open(av[1], O_RDONLY);
@@ -72,6 +71,6 @@ void init_map(char **av, t_game *game)
 		line = get_next_line(fd);
 	}
 	game->map[i] = NULL;
-	mapcopy_alloc(game, size);
+	mapcopy_alloc(game, game->map_height);
 	close(fd);
 }

@@ -6,7 +6,7 @@
 #    By: andi <andi@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/10 10:01:19 by anvacca           #+#    #+#              #
-#    Updated: 2024/09/13 17:43:48 by andi             ###   ########.fr        #
+#    Updated: 2024/09/13 17:50:59 by andi             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,30 +14,13 @@
 EXE			=	so_long
 
 # Files
-SRC			=	./src/main.c \
-				./src/test.c \
+SRC			=	main.c \
 
-SRC_UTILS	=	./src/utils/exit_function.c \
-				./src/utils/ft_strcmp.c \
-				./src/utils/ft_strlen.c \
-				./src/utils/ft_strdup.c \
-
-SRC_MAP		=	./src/map/init_map.c \
-				./src/map/gnl/get_next_line.c \
-				./src/map/gnl/get_next_line_utils.c \
-				./src/map/free_map.c \
-
-SRC_PARSING	=	./src/parsing/is_char.c \
-				./src/parsing/does_exist.c \
-				./src/parsing/is_rectangle.c \
-				./src/parsing/is_closed.c \
-				./src/parsing/floodfill_algo.c \
-
-SOURCES		=	${SRC} ${SRC_UTILS} ${SRC_MAP} ${SRC_PARSING}
+SOURCES		=	${SRC}
 OBJECTS		=	${SOURCES:%.c=obj/%.o}
 
 # Libraries
-MINILIBX	=	./includes/mlx_linux
+MINILIBX	=	mlx_linux
 
 # Variables
 CC			=	cc
@@ -48,7 +31,7 @@ RM			=	rm -rf
 all:		${EXE}
 
 ${EXE}:		${OBJECTS}
-			@${MAKE} -C ${MINILIBX} > /dev/null 2>&1
+			@${MAKE} -C ${MINILIBX}
 			@${CC} ${CFLAGS} ${OBJECTS} -L${MINILIBX} -lmlx -lX11 -lXext -lm -o ${EXE} 
 
 obj/%.o:	%.c

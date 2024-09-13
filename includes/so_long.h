@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+        */
+/*   By: andi <andi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:57:59 by andi              #+#    #+#             */
-/*   Updated: 2024/09/12 15:01:55 by anvacca          ###   ########.fr       */
+/*   Updated: 2024/09/13 17:41:00 by andi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,31 @@
 # define SO_LONG_H
 
 # include "mlx_linux/mlx.h" // MiniLibX
-# include <fcntl.h>  // open
-# include <math.h>   // Math Functions
-# include <stdarg.h> // Variadic Functions
-# include <stdio.h>  // printf
-# include <stdlib.h> // malloc, free, exit
-# include <unistd.h> // write, close, read
+// # include <X11/Xlib.h>      // Display
+# include <fcntl.h>         // open
+# include <math.h>          // Math Functions
+# include <stdarg.h>        // Variadic Functions
+# include <stdio.h>         // printf
+# include <stdlib.h>        // malloc, free, exit
+# include <unistd.h>        // write, close, read
 
-//key codes
-# define W						119
-# define ARROW_UP				65362
-# define A						97
-# define ARROW_LEFT				65361
-# define S						115
-# define ARROW_DOWN				65364
-# define D						100
-# define ARROW_RIGHT			65363
-# define ESC					65307
+// key codes
+# define W 119
+# define ARROW_UP 65362
+# define A 97
+# define ARROW_LEFT 65361
+# define S 115
+# define ARROW_DOWN 65364
+# define D 100
+# define ARROW_RIGHT 65363
+# define ESC 65307
+
+// general
+# define BLOCK 40
+# define HOUSE_H 580
+# define HOUSE_W 1000
+
+
 
 // gnl
 typedef struct s_list
@@ -43,7 +51,9 @@ typedef struct s_list
 typedef struct s_count
 {
 	int				C;
+	int				C2;
 	int				E;
+	int				E2;
 	int				P;
 }					t_count;
 
@@ -57,11 +67,12 @@ typedef struct s_pos
 // mlx
 typedef struct s_mlx
 {
-	void	*mlx_con;
-	void	*mlx_window;
+	void			*mlx_con;
+	void			*mlx_window;
+	void			*wall_img;
 }					t_mlx;
 
-//main
+// main
 typedef struct s_game
 {
 	struct s_count	count;
@@ -69,10 +80,12 @@ typedef struct s_game
 	struct s_mlx	mlx;
 	char			**map;
 	char			**map_copy;
+	int				screen_width;
+	int				screen_height;
+	int				map_width;
+	int				map_height;
 
 }					t_game;
-
-
 
 // Map
 void				free_map(t_game *game);
@@ -101,7 +114,6 @@ int					ft_strcmp(char *s1, char *s2);
 int					ft_strlen(char *str);
 char				*ft_strdup(char *str);
 
-void	test(void);
-
+void				test(void);
 
 #endif
