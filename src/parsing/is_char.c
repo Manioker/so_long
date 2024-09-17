@@ -6,7 +6,7 @@
 /*   By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 09:36:46 by anvacca           #+#    #+#             */
-/*   Updated: 2024/09/12 14:23:56 by anvacca          ###   ########.fr       */
+/*   Updated: 2024/09/17 13:52:10 by anvacca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,5 @@ void is_char(t_game *game)
 		free_map(game);
 		exit_function(4);
 	}
+	game->count.C2 = game->count.C;
 }

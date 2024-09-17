@@ -3,39 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   player_move.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andi <andi@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:49:58 by andi              #+#    #+#             */
-/*   Updated: 2024/09/13 16:28:12 by andi             ###   ########.fr       */
+/*   Updated: 2024/09/17 13:54:30 by anvacca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-void player_move(t_game *game, int move)
+void	printus(char **map)
 {
-	int x;
-	int y;
-	
-	x = game->pos.Px;
-	y = game->pos.Py;
-	game->map[y][x] = '0';
-	if (move == W && game->map[y - 1][x] != '1')
-		y--;
-	else if (move == A && game->map[y][x - 1] != '1')
-		x--;
-	else if (move == S && game->map[y + 1][x] != '1')
-		y++;
-	else if (move == D && game->map[y][x + 1] != '1')
-		x++;
-	if (game->map[y][x] == 'C')
-		game->count.C2--;
-	// if (game->map[y][x] == 'M')
-	// 	you_died(game);
+	int	j;
+
+	j = 0;
+	while (map[j])
+	{
+		printf("%s", map[j]);
+		j++;
+	}
+	puts("\n");
+}
+
+void	player_move(int x, int y, t_game *game)
+{
+	if (game->map[y][x] == '0' || game->map[y][x] == 'C')
+	{
+		if (game->map[y][x] == 'C')
+			game->count.C2--;
+		game->map[game->pos.Py][game->pos.Px] = '0';
+		game->map[y][x] = 'P';
+		game->pos.Px = x;
+		game->pos.Py = y;
+	}
 	if (game->map[y][x] == 'E' && game->count.C2 == 0)
 	{
-		close_display(game);
 		write(1, "keep it a secret...", 19);
+		close_display(game);
 	}
-	game->map[y][x] = 'P'
+	printus(game->map);
 }

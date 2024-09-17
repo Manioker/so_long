@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: andi <andi@student.42.fr>                  +#+  +:+       +#+         #
+#    By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/10 10:01:19 by anvacca           #+#    #+#              #
-#    Updated: 2024/09/13 17:43:48 by andi             ###   ########.fr        #
+#    Updated: 2024/09/17 09:50:18 by anvacca          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ EXE			=	so_long
 
 # Files
 SRC			=	./src/main.c \
-				./src/test.c \
 
 SRC_UTILS	=	./src/utils/exit_function.c \
 				./src/utils/ft_strcmp.c \
@@ -33,7 +32,16 @@ SRC_PARSING	=	./src/parsing/is_char.c \
 				./src/parsing/is_closed.c \
 				./src/parsing/floodfill_algo.c \
 
-SOURCES		=	${SRC} ${SRC_UTILS} ${SRC_MAP} ${SRC_PARSING}
+SRC_GAME	=	./src/game/key_binds.c \
+				./src/game/player_move.c \
+
+SRC_DISPLAY	=	./src/display/close_display.c \
+				./src/display/display_game.c \
+				./src/display/init_sprite.c \
+				./src/display/init_display.c \
+
+
+SOURCES		=	${SRC} ${SRC_UTILS} ${SRC_MAP} ${SRC_PARSING} ${SRC_GAME} ${SRC_DISPLAY}
 OBJECTS		=	${SOURCES:%.c=obj/%.o}
 
 # Libraries

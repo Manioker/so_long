@@ -3,40 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andi <andi@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 18:35:33 by andi              #+#    #+#             */
-/*   Updated: 2024/09/13 16:14:03 by andi             ###   ########.fr       */
+/*   Updated: 2024/09/17 13:52:35 by anvacca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-void	printus(char **map)
-{
-	int	j;
-
-	j = 0;
-	while (map[j])
-	{
-		printf("%s", map[j]);
-		j++;
-	}
-}
 
 void init_struct(t_game *game)
 {
 	game->count.C = 0;
 	game->count.C2 = 0;
 	game->count.E = 0;
-	game->count.E2 = 0;
 	game->count.P = 0;
 	game->pos.Px = 0;
 	game->pos.Py = 0;
 	game->map = 0;
 	game->map_copy = 0;
-	game->screen_width = 0;
-	game->screen_height = 0;
 	game->map_width = 0;
 	game->map_height = 0;
 }
@@ -55,9 +40,12 @@ int main(int ac, char **av)
 	is_closed(game);
 	is_char(game);
 	floodfill_algo(game);
+	init_display(game);
+	init_sprite(game);
 	if (game->count.C > 0 || game->count.E > 0)
 		exit_function(4);
-	mlx_hook(game->mlx.mlx_con, 2, (1L<<0), key_binds, game);
+	display_game(game);
+	mlx_hook(game->mlx.mlx_window, 2, (1L<<0), key_binds, game);
+	mlx_hook(game->mlx.mlx_window, 17, 0L, close_display, game);
 	mlx_loop(game->mlx.mlx_con);
-	printus(game->map_copy);
 }

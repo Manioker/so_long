@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andi <andi@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:57:59 by andi              #+#    #+#             */
-/*   Updated: 2024/09/13 17:41:00 by andi             ###   ########.fr       */
+/*   Updated: 2024/09/17 13:52:26 by anvacca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define SO_LONG_H
 
 # include "mlx_linux/mlx.h" // MiniLibX
-// # include <X11/Xlib.h>      // Display
 # include <fcntl.h>         // open
 # include <math.h>          // Math Functions
 # include <stdarg.h>        // Variadic Functions
@@ -22,7 +21,7 @@
 # include <stdlib.h>        // malloc, free, exit
 # include <unistd.h>        // write, close, read
 
-// key codes
+// Key codes
 # define W 119
 # define ARROW_UP 65362
 # define A 97
@@ -33,12 +32,18 @@
 # define ARROW_RIGHT 65363
 # define ESC 65307
 
-// general
-# define BLOCK 40
+// General
+# define BLOCK 48
 # define HOUSE_H 580
 # define HOUSE_W 1000
 
-
+// Sprites
+# define WALL "./assets/sprites/wall.xpm"
+# define FLOOR "./assets/sprites/floor.xpm"
+# define COLLECTIBLE "./assets/sprites/collectible.xpm"
+# define PLAYER "./assets/sprites/player.xpm"
+# define ENEMY "./assets/sprites/enemy.xpm"
+# define EXIT "./assets/sprites/exit.xpm"
 
 // gnl
 typedef struct s_list
@@ -48,29 +53,33 @@ typedef struct s_list
 }					t_list;
 
 // count
-typedef struct s_count
+struct				s_count
 {
 	int				C;
 	int				C2;
 	int				E;
-	int				E2;
 	int				P;
-}					t_count;
+};
 
 // position
-typedef struct s_pos
+struct				s_pos
 {
 	int				Px;
 	int				Py;
-}					t_pos;
+};
 
 // mlx
-typedef struct s_mlx
+struct				s_mlx
 {
 	void			*mlx_con;
 	void			*mlx_window;
 	void			*wall_img;
-}					t_mlx;
+	void			*wall;
+	void			*floor;
+	void			*collectible;
+	void			*player;
+	void			*exit;
+};
 
 // main
 typedef struct s_game
@@ -80,12 +89,20 @@ typedef struct s_game
 	struct s_mlx	mlx;
 	char			**map;
 	char			**map_copy;
-	int				screen_width;
-	int				screen_height;
 	int				map_width;
 	int				map_height;
 
 }					t_game;
+
+// Display
+int					close_display(t_game *game);
+void				display_game(t_game *game);
+void				init_display(t_game *game);
+void				init_sprite(t_game *game);
+
+// Game
+int					key_binds(int key_code, t_game *game);
+void				player_move(int x, int y, t_game *game);
 
 // Map
 void				free_map(t_game *game);

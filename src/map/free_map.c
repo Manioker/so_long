@@ -6,7 +6,7 @@
 /*   By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 09:14:45 by anvacca           #+#    #+#             */
-/*   Updated: 2024/09/10 10:05:54 by anvacca          ###   ########.fr       */
+/*   Updated: 2024/09/17 09:13:59 by anvacca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	free_map(t_game *game)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
 	while (game->map[i])
