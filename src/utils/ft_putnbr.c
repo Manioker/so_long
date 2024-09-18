@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_display.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/13 09:05:50 by andi              #+#    #+#             */
-/*   Updated: 2024/09/18 10:21:00 by anvacca          ###   ########.fr       */
+/*   Created: 2024/09/18 10:15:00 by anvacca           #+#    #+#             */
+/*   Updated: 2024/09/18 10:18:13 by anvacca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-int	close_display(t_game *game)
+static void	ft_putchar(char c)
 {
-	mlx_destroy_image(game->mlx.mlx_con, game->mlx.wall);
-	mlx_destroy_image(game->mlx.mlx_con, game->mlx.floor);
-	mlx_destroy_image(game->mlx.mlx_con, game->mlx.player);
-	mlx_destroy_image(game->mlx.mlx_con, game->mlx.collectible);
-	mlx_destroy_image(game->mlx.mlx_con, game->mlx.exit);
-	mlx_destroy_window(game->mlx.mlx_con, game->mlx.mlx_window);
-	free(game->mlx.mlx_con);
-	free_map(game);
-	free(game);
-	exit(0);
+	write(1, &c, 1);
+}
+
+void	ft_putnbr(int nb)
+{
+	if (nb >= 10)
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
+	else
+		ft_putchar(nb + '0');
 }

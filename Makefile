@@ -6,7 +6,7 @@
 #    By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/10 10:01:19 by anvacca           #+#    #+#              #
-#    Updated: 2024/09/17 09:50:18 by anvacca          ###   ########.fr        #
+#    Updated: 2024/09/18 10:17:21 by anvacca          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRC			=	./src/main.c \
 
 SRC_UTILS	=	./src/utils/exit_function.c \
 				./src/utils/ft_strcmp.c \
+				./src/utils/ft_putnbr.c \
 				./src/utils/ft_strlen.c \
 				./src/utils/ft_strdup.c \
 

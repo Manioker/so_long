@@ -6,7 +6,7 @@
 /*   By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:57:59 by andi              #+#    #+#             */
-/*   Updated: 2024/09/17 13:52:26 by anvacca          ###   ########.fr       */
+/*   Updated: 2024/09/18 10:46:46 by anvacca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,17 @@ typedef struct s_list
 // count
 struct				s_count
 {
-	int				C;
-	int				C2;
-	int				E;
-	int				P;
+	int				c;
+	int				c2;
+	int				e;
+	int				p;
 };
 
 // position
 struct				s_pos
 {
-	int				Px;
-	int				Py;
+	int				px;
+	int				py;
 };
 
 // mlx
@@ -130,7 +130,6 @@ void				exit_function(int num);
 int					ft_strcmp(char *s1, char *s2);
 int					ft_strlen(char *str);
 char				*ft_strdup(char *str);
-
-void				test(void);
+void				ft_putnbr(int nb);
 
 #endif

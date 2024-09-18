@@ -6,7 +6,7 @@
 /*   By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 16:29:25 by andi              #+#    #+#             */
-/*   Updated: 2024/09/17 13:28:17 by anvacca          ###   ########.fr       */
+/*   Updated: 2024/09/18 10:22:01 by anvacca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	display(t_game *game, int j, int *i)
 	if (game->map[j][*i] == '0')
 		mlx_put_image_to_window(game->mlx.mlx_con, game->mlx.mlx_window,
 			game->mlx.floor, *i * BLOCK, j * BLOCK);
-	if (game->map[j][*i] == 'C') 
+	if (game->map[j][*i] == 'C')
 		mlx_put_image_to_window(game->mlx.mlx_con, game->mlx.mlx_window,
 			game->mlx.collectible, *i * BLOCK, j * BLOCK);
 	if (game->map[j][*i] == 'P')

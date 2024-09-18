@@ -6,13 +6,13 @@
 /*   By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 18:02:06 by andi              #+#    #+#             */
-/*   Updated: 2024/09/11 10:08:31 by anvacca          ###   ########.fr       */
+/*   Updated: 2024/09/18 10:41:53 by anvacca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-void does_exist(int ac, char **av)
+void	does_exist(int ac, char **av)
 {
 	if (ac != 2)
 		exit_function(1);

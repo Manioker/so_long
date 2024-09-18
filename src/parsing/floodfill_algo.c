@@ -6,7 +6,7 @@
 /*   By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 08:11:47 by anvacca           #+#    #+#             */
-/*   Updated: 2024/09/17 13:51:59 by anvacca          ###   ########.fr       */
+/*   Updated: 2024/09/18 10:53:12 by anvacca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,34 +48,34 @@ static void	mapcopy_alloc(t_game *game, int size)
 static void	used_char(t_game *game, int j, int i)
 {
 	if (game->map[j][i] == 'C')
-		game->count.C--;
+		game->count.c--;
 	if (game->map[j][i] == 'E')
-		game->count.E--;
-	game->map_copy[game->pos.Py][game->pos.Px] = '1';
+		game->count.e--;
+	game->map_copy[game->pos.py][game->pos.px] = '1';
 	floodfill(game);
 }
 
 static void	floodfill(t_game *game)
 {
-	if (game->map_copy[game->pos.Py][game->pos.Px + 1] != '1')
+	if (game->map_copy[game->pos.py][game->pos.px + 1] != '1')
 	{
-		used_char(game, game->pos.Py, game->pos.Px++);
-		game->pos.Px--;
+		used_char(game, game->pos.py, game->pos.px++);
+		game->pos.px--;
 	}
-	else if (game->map_copy[game->pos.Py + 1][game->pos.Px] != '1')
+	else if (game->map_copy[game->pos.py + 1][game->pos.px] != '1')
 	{
-		used_char(game, game->pos.Py++, game->pos.Px);
-		game->pos.Py--;
+		used_char(game, game->pos.py++, game->pos.px);
+		game->pos.py--;
 	}
-	else if (game->map_copy[game->pos.Py][game->pos.Px - 1] != '1')
+	else if (game->map_copy[game->pos.py][game->pos.px - 1] != '1')
 	{
-		used_char(game, game->pos.Py, game->pos.Px--);
-		game->pos.Px++;
+		used_char(game, game->pos.py, game->pos.px--);
+		game->pos.px++;
 	}
-	else if (game->map_copy[game->pos.Py - 1][game->pos.Px] != '1')
+	else if (game->map_copy[game->pos.py - 1][game->pos.px] != '1')
 	{
-		used_char(game, game->pos.Py--, game->pos.Px);
-		game->pos.Py++;
+		used_char(game, game->pos.py--, game->pos.px);
+		game->pos.py++;
 	}
 	else
 		return ;

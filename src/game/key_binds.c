@@ -6,7 +6,7 @@
 /*   By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 15:00:02 by anvacca           #+#    #+#             */
-/*   Updated: 2024/09/17 13:26:47 by anvacca          ###   ########.fr       */
+/*   Updated: 2024/09/18 10:46:58 by anvacca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 int	key_binds(int key_code, t_game *game)
 {
-	int	x = game->pos.Px;
-	int y = game->pos.Py;
+	int	x;
+	int	y;
 
+	x = game->pos.px;
+	y = game->pos.py;
 	if (key_code == ESC)
 		close_display(game);
 	else if ((key_code == W) || (key_code == ARROW_UP))

@@ -6,13 +6,13 @@
 /*   By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:54:25 by andi              #+#    #+#             */
-/*   Updated: 2024/09/12 14:39:17 by anvacca          ###   ########.fr       */
+/*   Updated: 2024/09/18 10:43:20 by anvacca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-void exit_function(int num)
+void	exit_function(int num)
 {
 	if (num == 1)
 		write(1, "not enough or too many args", 27);
