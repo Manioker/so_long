@@ -6,14 +6,14 @@
 /*   By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 12:57:59 by andi              #+#    #+#             */
-/*   Updated: 2024/09/18 10:46:46 by anvacca          ###   ########.fr       */
+/*   Updated: 2024/10/09 14:47:08 by anvacca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "mlx_linux/mlx.h" // MiniLibX
+# include ".mlx_linux/mlx.h" // MiniLibX
 # include <fcntl.h>         // open
 # include <math.h>          // Math Functions
 # include <stdarg.h>        // Variadic Functions

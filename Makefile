@@ -6,7 +6,7 @@
 #    By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/10 10:01:19 by anvacca           #+#    #+#              #
-#    Updated: 2024/09/18 10:17:21 by anvacca          ###   ########.fr        #
+#    Updated: 2024/10/09 09:14:25 by anvacca          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ SOURCES		=	${SRC} ${SRC_UTILS} ${SRC_MAP} ${SRC_PARSING} ${SRC_GAME} ${SRC_DISPL
 OBJECTS		=	${SOURCES:%.c=obj/%.o}
 
 # Libraries
-MINILIBX	=	./includes/mlx_linux
+MINILIBX	=	./includes/.mlx_linux
 
 # Variables
 CC			=	cc

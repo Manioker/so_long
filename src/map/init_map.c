@@ -6,7 +6,7 @@
 /*   By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 13:17:12 by andi              #+#    #+#             */
-/*   Updated: 2024/09/17 10:36:45 by anvacca          ###   ########.fr       */
+/*   Updated: 2024/10/11 12:12:06 by anvacca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,29 @@ int	map_size(int fd)
 	if (buffer == '\n' && end == 0)
 		lines--;
 	close(fd);
+	if (lines <= 1)
+		exit_function(4);
 	return (lines);
+}
+
+static void	file_pb(char *av, int fd)
+{
+	char	check_if_empty;
+
+	fd = open(av, __O_DIRECTORY);
+	if (fd != -1)
+	{
+		close(fd);
+		exit_function(6);
+	}
+	close(fd);
+	fd = open(av, O_RDONLY);
+	if (!(read(fd, &check_if_empty, 1)))
+	{
+		close(fd);
+		exit_function(6);
+	}
+	close(fd);
 }
 
 void	init_map(char **av, t_game *game)
@@ -40,7 +62,11 @@ void	init_map(char **av, t_game *game)
 	int		i;
 
 	i = 0;
+	fd = 0;
+	file_pb(av[1], fd);
 	fd = open(av[1], O_RDONLY);
+	if (fd == -1)
+		exit_function(2);
 	game->map_height = map_size(fd);
 	game->map = malloc(sizeof(char *) * (game->map_height + 1));
 	if (!game->map)

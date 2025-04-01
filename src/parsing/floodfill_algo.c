@@ -6,13 +6,13 @@
 /*   By: anvacca <anvacca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 08:11:47 by anvacca           #+#    #+#             */
-/*   Updated: 2024/09/18 10:53:12 by anvacca          ###   ########.fr       */
+/*   Updated: 2024/10/11 11:19:53 by anvacca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-static void	floodfill(t_game *game);
+static	void	floodfill(t_game *game, int x, int y);
 
 void	free_map_copy(t_game *game)
 {
@@ -45,46 +45,34 @@ static void	mapcopy_alloc(t_game *game, int size)
 	game->map_copy[i] = NULL;
 }
 
-static void	used_char(t_game *game, int j, int i)
+static	void	floodfill(t_game *game, int x, int y)
 {
-	if (game->map[j][i] == 'C')
+	if (game->map_copy[y][x] == 'C')
 		game->count.c--;
-	if (game->map[j][i] == 'E')
+	if (game->map_copy[y][x] == 'E')
 		game->count.e--;
-	game->map_copy[game->pos.py][game->pos.px] = '1';
-	floodfill(game);
-}
-
-static void	floodfill(t_game *game)
-{
-	if (game->map_copy[game->pos.py][game->pos.px + 1] != '1')
+	if (game->map_copy[y][x] == '1' || game->map_copy[y][x] == 'E')
 	{
-		used_char(game, game->pos.py, game->pos.px++);
-		game->pos.px--;
-	}
-	else if (game->map_copy[game->pos.py + 1][game->pos.px] != '1')
-	{
-		used_char(game, game->pos.py++, game->pos.px);
-		game->pos.py--;
-	}
-	else if (game->map_copy[game->pos.py][game->pos.px - 1] != '1')
-	{
-		used_char(game, game->pos.py, game->pos.px--);
-		game->pos.px++;
-	}
-	else if (game->map_copy[game->pos.py - 1][game->pos.px] != '1')
-	{
-		used_char(game, game->pos.py--, game->pos.px);
-		game->pos.py++;
-	}
-	else
+		game->map_copy[y][x] = '1';
 		return ;
-	floodfill(game);
+	}
+	game->map_copy[y][x] = '1';
+	floodfill(game, x + 1, y);
+	floodfill(game, x - 1, y);
+	floodfill(game, x, y + 1);
+	floodfill(game, x, y - 1);
 }
 
 void	floodfill_algo(t_game *game)
 {
+	int	x;
+	int	y;
+
+	x = game->pos.px;
+	y = game->pos.py;
 	mapcopy_alloc(game, game->map_height);
-	floodfill(game);
+	floodfill(game, x, y);
+	if (game->count.e != 0 || game->count.c != 0)
+		exit_function(4);
 	free_map_copy(game);
 }
